@@ -1,7 +1,10 @@
 package pages;
 
+import net.bytebuddy.asm.Advice;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class HomePage extends Page {
     WebElement UsdCurrency;
 
     @FindBy(xpath = "//input[@name = 's']")
-    WebElement SerachField;
+    WebElement SearchField;
 
     public void goToLink(String http){
         driver.get(http);
@@ -34,8 +37,8 @@ public class HomePage extends Page {
         return ProductsPriceCurrencyList;
     }
 
-    public void getTextFromCurrencyField(){
-        CurrencyField.getText();
+    public String getTextFromCurrencyField(){
+        return CurrencyField.getText();
     }
 
     public void clickOnCurrencyChangeButton(){
@@ -43,11 +46,13 @@ public class HomePage extends Page {
     }
 
     public void clickOnUsdCurrency(){
+        wait.until(ExpectedConditions.elementToBeClickable(UsdCurrency));
         UsdCurrency.click();
     }
 
-    public void enterToSearchField(String searchedText){
-        SerachField.sendKeys(searchedText);
+    public void searchByWord(String searchedText){
+        SearchField.sendKeys(searchedText);
+        SearchField.sendKeys(Keys.ENTER);
     }
 
 }
