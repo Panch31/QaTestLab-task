@@ -1,6 +1,5 @@
 package pages;
 
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,11 +10,11 @@ import java.util.List;
 public class HomePage extends Page {
 
     public HomePage(PageManager pages) {
-        super(pages);
+            super(pages);
     }
 
     @FindBy(xpath = "(//span[contains(@class, 'expand-more')])[2]")
-    WebElement CurrencyField;
+    WebElement currencyField;
 
     @FindBy(xpath = "//span[@itemprop = 'price']")
     List<WebElement> ProductsPriceCurrencyList;
@@ -34,11 +33,12 @@ public class HomePage extends Page {
     }
 
     public List getProductPriceCurrencyList(){
+        wait.until(ExpectedConditions.visibilityOf(ProductsPriceCurrencyList.get(1)));
         return ProductsPriceCurrencyList;
     }
 
     public String getTextFromCurrencyField(){
-        return CurrencyField.getText();
+        return currencyField.getText();
     }
 
     public void clickOnCurrencyChangeButton(){

@@ -10,6 +10,6 @@ public class Page {
 
     Page(PageManager pages){
         this.driver = pages.getDriver();
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 20);
     }
 }

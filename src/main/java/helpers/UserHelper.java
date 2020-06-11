@@ -19,9 +19,9 @@ public class UserHelper extends PageManager {
 
     public List getCurrencyProductsList(){
         List<WebElement> currencyProducts = homePage.getProductPriceCurrencyList();
-        List<String> currencyProductsString = currencyProducts.stream().map(p -> p.getText()).collect(Collectors.toList());
-        return currencyProductsString;
+        return currencyProducts.stream().map(p -> p.getText()).collect(Collectors.toList());
     }
+
 
     public void setUsdAsCurrency(){
         homePage.clickOnCurrencyChangeButton();
