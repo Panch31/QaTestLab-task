@@ -8,9 +8,11 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 public class PageManager {
 
     private WebDriver driver;
+    protected HomePage homePage;
 
     public PageManager(WebDriver driver){
         this.driver = driver;
+        homePage = initElements(new HomePage(this));
     }
 
     private <T extends Page> T initElements(T page){
