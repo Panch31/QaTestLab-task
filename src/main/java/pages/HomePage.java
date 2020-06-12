@@ -17,24 +17,24 @@ public class HomePage extends Page {
     WebElement currencyField;
 
     @FindBy(xpath = "//span[@itemprop = 'price']")
-    List<WebElement> ProductsPriceCurrencyList;
+    List<WebElement> productsPriceCurrencyList;
 
     @FindBy(xpath = "(//i[@class = 'material-icons expand-more'])[2]")
-    WebElement CurrencyChangeButton;
+    WebElement currencyChangeButton;
 
     @FindBy(xpath = "//ul[@aria-labelledby = 'dLabel']/li[3]")
-    WebElement UsdCurrency;
+    WebElement usdCurrency;
 
     @FindBy(xpath = "//input[@name = 's']")
-    WebElement SearchField;
+    WebElement searchField;
 
     public void goToLink(String http){
         driver.get(http);
     }
 
     public List getProductPriceCurrencyList(){
-        wait.until(ExpectedConditions.visibilityOf(ProductsPriceCurrencyList.get(1)));
-        return ProductsPriceCurrencyList;
+        wait.until(ExpectedConditions.visibilityOf(productsPriceCurrencyList.get(1)));
+        return productsPriceCurrencyList;
     }
 
     public String getTextFromCurrencyField(){
@@ -42,17 +42,17 @@ public class HomePage extends Page {
     }
 
     public void clickOnCurrencyChangeButton(){
-        CurrencyChangeButton.click();
+        currencyChangeButton.click();
     }
 
     public void clickOnUsdCurrency(){
-        wait.until(ExpectedConditions.elementToBeClickable(UsdCurrency));
-        UsdCurrency.click();
+        wait.until(ExpectedConditions.elementToBeClickable(usdCurrency));
+        usdCurrency.click();
     }
 
     public void searchByWord(String searchedText){
-        SearchField.sendKeys(searchedText);
-        SearchField.sendKeys(Keys.ENTER);
+        searchField.sendKeys(searchedText);
+        searchField.sendKeys(Keys.ENTER);
     }
 
 }

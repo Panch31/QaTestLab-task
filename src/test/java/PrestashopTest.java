@@ -26,8 +26,7 @@ public class PrestashopTest extends TestBase {
 
     @Test
     public void currencyOfProductsAtSearchPageTest(){
-        app.getSearchPageHelper().productResultListCurrency().forEach(elem -> System.out.println(elem));
-        app.getSearchPageHelper().productResultListCurrency().forEach(elem -> Assert.assertTrue(elem.contains("\\$$")));
+        app.getSearchPageHelper().productResultListCurrency().forEach(elem -> Assert.assertTrue(elem.contains("$")));
     }
 
 

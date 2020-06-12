@@ -13,38 +13,38 @@ public class SearchPage extends Page {
     }
 
     @FindBy(xpath = "//div[contains(@class, 'col-md-6')]/p")
-    WebElement SearchedForProductCount;
+    WebElement searchedForProductCount;
 
     @FindBy(xpath = "//div[@class = 'product-price-and-shipping']")
-    List<WebElement> SearchedProductsList;
+    List<WebElement> searchedProductsList;
 
     @FindBy(xpath = "//div[@class = 'product-price-and-shipping']/span[contains(@itemprop, 'price')]")
-    List<WebElement> SearchedProductsListPrice;
+    List<WebElement> searchedProductsListPrice;
 
     @FindBy(xpath = "(//i[@class = 'material-icons pull-xs-right'])")
-    WebElement SortingButton;
+    WebElement sortingButton;
 
     @FindBy(xpath = "(//div[@class = 'dropdown-menu']/a)[last()]")
-    WebElement FromHighToLowPriceField;
+    WebElement fromHighToLowPriceField;
 
     public String getTextFromSearchedForField(){
-        return SearchedForProductCount.getText();
+        return searchedForProductCount.getText();
     }
 
     public List getSearchedProductList(){
-        return SearchedProductsList;
+        return searchedProductsList;
     }
 
     public List getSearchedProductListPrice(){
-        return SearchedProductsListPrice;
+        return searchedProductsListPrice;
     }
 
     public void clickOnSortingButton(){
-        SortingButton.click();
+        sortingButton.click();
     }
 
     public void clickOnFromHughToLowSortingField(){
-        wait.until(ExpectedConditions.elementToBeClickable(FromHighToLowPriceField)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(fromHighToLowPriceField)).click();
     }
 
 }

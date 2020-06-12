@@ -21,8 +21,9 @@ public class SearchPageHelper extends PageManager {
         return searchedForString;
     }
 
-    public void clickOnSortingButton(){
+    public void setSorting(){
         searchPage.clickOnSortingButton();
+        searchPage.clickOnFromHughToLowSortingField();
     }
 
     public int productResultCount(){
