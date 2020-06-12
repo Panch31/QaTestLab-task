@@ -1,10 +1,13 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class SearchPage extends Page {
 
@@ -15,8 +18,14 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//div[contains(@class, 'col-md-6')]/p")
     WebElement searchedForProductCount;
 
+    @FindBy(xpath = "//span[@class = 'discount-percentage']")
+    List<WebElement> productWithDiscount;
+
     @FindBy(xpath = "//div[@class = 'product-price-and-shipping']")
     List<WebElement> searchedProductsList;
+
+    @FindBy(xpath = "//div[@class = 'product-price-and-shipping']/span[1]")
+    List<WebElement> productRegularPriceList;
 
     @FindBy(xpath = "//div[@class = 'product-price-and-shipping']/span[contains(@itemprop, 'price')]")
     List<WebElement> searchedProductsListPrice;
@@ -43,8 +52,20 @@ public class SearchPage extends Page {
         sortingButton.click();
     }
 
-    public void clickOnFromHughToLowSortingField(){
-        wait.until(ExpectedConditions.elementToBeClickable(fromHighToLowPriceField)).click();
+    public void clickOnFromHighToLowSortingField(){
+        wait.until(ExpectedConditions.visibilityOf(fromHighToLowPriceField));
+        fromHighToLowPriceField.click();
+    }
+
+    public List getProductRegularPriceList(){
+        return productRegularPriceList;
+    }
+
+    public void getAncestor(){
+        List<WebElement> AncestorsOfProductWithDiscount = productWithDiscount.stream().map(p -> p.findElement
+                (By.xpath("//span[@class = 'discount-percentage']/parent::div"))).collect(Collectors.toList());
+        AncestorsOfProductWithDiscount.forEach(elem -> System.out.println(elem.getText()));
+
     }
 
 }

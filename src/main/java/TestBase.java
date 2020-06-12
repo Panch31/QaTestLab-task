@@ -25,7 +25,6 @@ public class TestBase {
 
     @AfterMethod
     public void afterMethod() {
-
     }
 
     @AfterClass

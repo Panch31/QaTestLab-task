@@ -11,6 +11,8 @@
                     <exclude name="productsCurrencyAndHeadCurrencyTest"/>
                     <include name="searchedForCountTest"/>
                     <include name="currencyOfProductsAtSearchPageTest"/>
+                    <include name="productSortingTest"/>
+                    <include name="getAncestor"/>
                 </methods>
             </class>
         </classes>

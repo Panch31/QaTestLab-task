@@ -29,6 +29,18 @@ public class PrestashopTest extends TestBase {
         app.getSearchPageHelper().productResultListCurrency().forEach(elem -> Assert.assertTrue(elem.contains("$")));
     }
 
+    @Test
+    public void productSortingTest(){
+        app.getSearchPageHelper().setSorting();
+        driver.navigate().refresh();
+        app.getSearchPageHelper().priceCompare().forEach(elem -> System.out.println(elem));
+    }
+
+    @Test
+    public void getAncestor(){
+        app.getSearchPageHelper().getAncestor();
+    }
+
 
 
 
