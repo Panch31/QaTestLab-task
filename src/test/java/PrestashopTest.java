@@ -1,6 +1,8 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class PrestashopTest extends TestBase {
 
     @Test
@@ -32,8 +34,10 @@ public class PrestashopTest extends TestBase {
     @Test
     public void productSortingTest(){
         app.getSearchPageHelper().setSorting();
-        driver.navigate().refresh();
-        app.getSearchPageHelper().priceCompare().forEach(elem -> System.out.println(elem));
+        List<Double> pricesList = app.getSearchPageHelper().pricesList();
+        for (int i = 0; i < app.getSearchPageHelper().productResultCount(); i++){
+            Assert.assertTrue(pricesList.get(i) >= pricesList.get(i++));
+        }
     }
 
     @Test

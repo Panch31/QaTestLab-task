@@ -36,7 +36,12 @@ public class SearchPageHelper extends PageManager {
         searchPage.clickOnFromHighToLowSortingField();
     }
 
-    public List<Double> priceCompare(){
+    public List<Double> pricesList(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<WebElement> productRegularPriceList = searchPage.getProductRegularPriceList();
         List<String> regularPriceStringList = productRegularPriceList.stream().map(p -> p.getText().
                 replace("," , ".").replaceAll("[^\\d.]", "")).collect(Collectors.toList());
