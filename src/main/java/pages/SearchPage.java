@@ -1,15 +1,15 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
+import java.util.logging.Logger;
 
 public class SearchPage extends Page {
+
+    private static final Logger log = Logger.getLogger(String.valueOf(SearchPage.class));
 
     public SearchPage(PageManager pages) {
         super(pages);
@@ -56,11 +56,13 @@ public class SearchPage extends Page {
 
     public void clickOnSortingButton(){
         sortingButton.click();
+        log.info("click on the sorting field");
     }
 
     public void clickOnFromHighToLowSortingField(){
         wait.until(ExpectedConditions.visibilityOf(fromHighToLowPriceField));
         fromHighToLowPriceField.click();
+        log.info("click on the sorting from High to Low price field");
     }
 
     public List getProductRegularPriceList(){

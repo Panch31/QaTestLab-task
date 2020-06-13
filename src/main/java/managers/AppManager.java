@@ -7,13 +7,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.HomePage;
 import pages.SearchPage;
 import util.PropertyLoader;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 public class AppManager {
+
+    private static final Logger log = Logger.getLogger(String.valueOf(AppManager.class));
 
     private static WebDriver driver;
     private NavigationHelper navigationHelper;
@@ -34,6 +38,7 @@ public class AppManager {
         userHelper = new UserHelper();
         navigationHelper = new NavigationHelper();
         searchPageHelper = new SearchPageHelper();
+        log.info("chrome web driver started");
     }
 
     public static WebDriver getWebDriver(){return driver;}
