@@ -50,7 +50,30 @@ public class SearchPageHelper extends PageManager {
         return regularPriceDoubleList;
     }
 
-    public void getAncestor(){
-        searchPage.getAncestor();
+    public List getDiscountOfSaleProduct(){
+        List<WebElement> discountOfSaleProduct = searchPage.getDiscountOfSaleProduct();
+        List<String> discountOfSaleProductStringList = discountOfSaleProduct.stream().map(p -> p.getText().
+                replace("-","").replace("%","")).collect(Collectors.toList());
+        List<Double> discountOfSaleProductDoubleList = discountOfSaleProductStringList.stream().map(p -> Double.parseDouble(p))
+                .collect(Collectors.toList());
+        return discountOfSaleProductDoubleList;
+    }
+
+    public List getDiscountProductRegularPrice(){
+        List<WebElement> discountOfProductRegularPrice = searchPage.getDiscountProductRegularPrice();
+        List<String> discountOfProductRegularPriceStringList = discountOfProductRegularPrice.stream().map(p -> p.getText().
+                replace("," , ".").replaceAll("[^\\d.]", "")).collect(Collectors.toList());
+        List<Double> discountOfSaleProductDoubleList = discountOfProductRegularPriceStringList.
+                stream().map(p -> Double.parseDouble(p)).collect(Collectors.toList());
+        return discountOfSaleProductDoubleList;
+    }
+
+    public List getDiscountProductPriceWithDiscount(){
+        List<WebElement> priceWithDiscount = searchPage.getDiscountProductPriceWithDiscount();
+        List<String> priceWithDiscountStringList = priceWithDiscount.stream().map(p -> p.getText().
+                replace("," , ".").replaceAll("[^\\d.]", "")).collect(Collectors.toList());
+        List<Double> priceWithDiscountDoubleList = priceWithDiscountStringList.stream().map(p -> Double.parseDouble(p))
+                .collect(Collectors.toList());
+        return priceWithDiscountDoubleList;
     }
 }

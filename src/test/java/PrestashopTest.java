@@ -41,8 +41,17 @@ public class PrestashopTest extends TestBase {
     }
 
     @Test
-    public void getAncestor(){
-        app.getSearchPageHelper().getAncestor();
+    public void discountTest(){
+        List<Double> discountOfSaleProduct = app.getSearchPageHelper().getDiscountOfSaleProduct();
+        List<Double> regularPriceOfDiscountProduct = app.getSearchPageHelper().getDiscountProductRegularPrice();
+        List<Double> priceWithDiscount = app.getSearchPageHelper().getDiscountProductPriceWithDiscount();
+        for (int i = 0; i < discountOfSaleProduct.size(); i++){
+            double priceAfterDiscount = regularPriceOfDiscountProduct.get(i) - regularPriceOfDiscountProduct.get(i) *
+                    discountOfSaleProduct.get(i) / 100;
+            double roundPriceAfterDiscount = (double)Math.round(priceAfterDiscount * 100d) / 100d;
+            double priceWithDiscountOnTheSite = priceWithDiscount.get(i);
+            Assert.assertEquals(roundPriceAfterDiscount, priceWithDiscountOnTheSite);
+        }
     }
 
 

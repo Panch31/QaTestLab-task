@@ -19,7 +19,13 @@ public class SearchPage extends Page {
     WebElement searchedForProductCount;
 
     @FindBy(xpath = "//span[@class = 'discount-percentage']")
-    List<WebElement> productWithDiscount;
+    List<WebElement> discountOfProductWithDiscount;
+
+    @FindBy(xpath = "//span[@class = 'discount-percentage']/preceding-sibling::span")
+    List<WebElement> productWithDiscountRegularPrice;
+
+    @FindBy(xpath = "//span[@class = 'discount-percentage']/following-sibling::span")
+    List<WebElement> productWithDiscountPriceWithDiscount;
 
     @FindBy(xpath = "//div[@class = 'product-price-and-shipping']")
     List<WebElement> searchedProductsList;
@@ -61,11 +67,16 @@ public class SearchPage extends Page {
         return productRegularPriceList;
     }
 
-    public void getAncestor(){
-        List<WebElement> AncestorsOfProductWithDiscount = productWithDiscount.stream().map(p -> p.findElement
-                (By.xpath("//span[@class = 'discount-percentage']/parent::div"))).collect(Collectors.toList());
-        AncestorsOfProductWithDiscount.forEach(elem -> System.out.println(elem.getText()));
+    public List getDiscountOfSaleProduct(){
+        return discountOfProductWithDiscount;
+    }
 
+    public List getDiscountProductRegularPrice(){
+        return productWithDiscountRegularPrice;
+    }
+
+    public List getDiscountProductPriceWithDiscount(){
+        return productWithDiscountPriceWithDiscount;
     }
 
 }

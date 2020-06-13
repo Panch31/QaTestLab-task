@@ -12,7 +12,7 @@
                     <include name="searchedForCountTest"/>
                     <include name="currencyOfProductsAtSearchPageTest"/>
                     <include name="productSortingTest"/>
-                    <include name="getAncestor"/>
+                    <include name="discountTest"/>
                 </methods>
             </class>
         </classes>
